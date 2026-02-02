@@ -32,3 +32,25 @@ The matrix is stored using Compressed Sparse Row (CSR):
 - `val.csv`: values of nonzeros
 
 Vector `b` = ones(N), initial guess `x0` = zeros(N).
+
+## Hardware and Software Environment
+- CPU: Intel / AMD x86_64
+- Compiler: g++ (C++17)
+- Optimization: -O3
+- Libraries: Standard C++ only (no external dependencies)
+- OS: Linux
+
+## How to Run
+To generate Matrix A data:
+```
+python3 data/generate_poisson.py --nx 64 –ny 64 --outdir data/poisson_64x64
+```
+To run the solver in the directory with `pcg_solver.cpp` file:
+```
+g++ -O3 pcg_solver.cpp -o pcg
+./pcg data/poisson_64x64
+```
+To run the plotting file:
+```
+python3 plot_Residual.py
+```
